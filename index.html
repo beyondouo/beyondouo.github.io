@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Crypto Monitor</title>
+<!-- iOS 主屏幕图标 & PWA 配置 -->
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Crypto Monitor">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="stylesheet" href="crypto.css">
+</head>
+<body>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Header -->
+<div class="header">
+  <h1>CRYPTO MONITOR</h1>
+  <div class="sub" id="subText">实时行情监控系统</div>
+  <div class="toolbar">
+    <div class="toolbar-group">
+      <button class="icon-btn" id="themeToggle" onclick="toggleTheme()" title="深色/浅色主题">🌙</button>
+      <button class="icon-btn" id="colorInvertToggle" onclick="toggleColorInvert()" title="涨跌颜色反转">🔄</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-group">
+      <button class="icon-btn" id="soundToggle" onclick="toggleSound()" title="声音提醒">🔊</button>
+      <button class="icon-btn" id="voiceToggle" onclick="toggleVoice()" title="语音播报">🗣️</button>
+      <button class="icon-btn" id="screenAlertToggle" onclick="toggleScreenAlert()" title="屏幕预警效果">💡</button>
+      <button class="icon-btn" id="spellToggle" onclick="toggleSpell()" title="币种名称读法：中文名称/逐字母">🀄</button>
+      <button class="icon-btn" onclick="openAlertModal()" title="价格预警" style="position:relative">🔔<span class="alert-badge" id="alertBadge" style="display:none">0</span></button>
+      <button class="icon-btn" onclick="openNotifyModal()" title="通知渠道设置">📱</button>
+      <button class="icon-btn" onclick="openForceAlertModal()" title="强制预警" style="position:relative">🚨<span class="alert-badge" id="forceAlertBadge" style="display:none">0</span></button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-group">
+      <button class="icon-btn" onclick="openPortfolioModal()" title="持仓盈亏">💰</button>
+      <button class="icon-btn" onclick="exportData()" title="导出数据">📤</button>
+      <button class="icon-btn" onclick="document.getElementById('importFile').click()" title="导入数据">📥</button>
+      <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-group">
+      <button class="icon-btn" onclick="openNewsModal()" title="新闻/公告聚合">📰</button>
+      <button class="icon-btn" onclick="openUnlockModal()" title="币种解锁通知">🔓</button>
+      <button class="icon-btn" onclick="openAiAnalysis()" title="AI 智能分析" style="position:relative">🤖</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="toolbar-group">
+      <button class="icon-btn" onclick="openHelpModal()" title="快捷键帮助">❓</button>
+    </div>
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <div class="select-group">
+    <label>优先交易所</label>
+    <select id="apiSelect" onchange="pickApi(this.value)">
+      <option value="-1">自动 (逐币探测)</option>
+    </select>
+  </div>
+  <div class="select-group">
+    <label>刷新间隔</label>
+    <select id="refreshSelect" onchange="setInterval_(parseInt(this.value))">
+      <option value="5">5秒</option>
+      <option value="10">10秒</option>
+      <option value="30">30秒</option>
+      <option value="60">1分钟</option>
+      <option value="300">5分钟</option>
+    </select>
+  </div>
+  <div class="select-group">
+    <label>法币</label>
+    <select id="currencySelect" onchange="setCurrency(this.value)">
+      <option value="USD">USD</option>
+      <option value="CNY">CNY</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div>
+</div>
+
+<!-- Add Bar (with search autocomplete) -->
+<div class="add-bar" id="addBar">
+  <input id="input" type="text" placeholder="搜索币种，如 BTC、DOGE…" autocomplete="off" oninput="onSearchInput(this.value)" onkeydown="onSearchKey(event)">
+  <button onclick="addFromInput()">添加</button>
+  <div class="search-dropdown" id="searchDropdown"></div>
+</div>
+
+<!-- Market Overview -->
+<div class="market-overview" id="marketOverview" style="display:none">
+  <div class="market-stat">
+    <span class="market-stat-label">💎 总市值</span>
+    <span class="market-stat-value" id="mktCap">--</span>
+    <span class="market-stat-change" id="mktCapChg"></span>
+  </div>
+  <div class="market-stat">
+    <span class="market-stat-label">₿ BTC 占比</span>
+    <span class="market-stat-value" id="btcDom">--</span>
+  </div>
+  <div class="market-stat">
+    <span class="market-stat-label">😱 恐惧贪婪</span>
+    <span class="market-stat-value" id="fearGreed">--</span>
+  </div>
+  <div class="market-stat">
+    <span class="market-stat-label">📊 24h 变化</span>
+    <span class="market-stat-value" id="mktChange">--</span>
+  </div>
+</div>
+
+<!-- Trending -->
+<div class="trending-section" id="trendingSection">
+  <div class="trending-header">
+    <span class="fire">🔥</span>
+    <span class="trending-title">24h 热搜币种</span>
+    <span class="trending-count" id="trendingCount">--</span>
+    <button class="trending-refresh" id="trendingRefreshBtn" onclick="refreshTrending(this)">刷新</button>
+  </div>
+  <div class="trending-groups" id="trendingGroups">
+    <div class="trending-loading"><span class="spinner"></span>加载热搜榜…</div>
+  </div>
+</div>
+
+<!-- Table -->
+<div class="table-container" id="tableContainer">
+  <div class="table-wrap">
+    <div class="table-head">
+      <span>币种</span>
+      <span onclick="sortBy('price')" id="sort-price">最新价 <span class="sort-arrow">▲</span></span>
+      <span onclick="sortBy('change')" id="sort-change">涨跌幅 <span class="sort-arrow">▲</span></span>
+      <span>走势</span>
+      <span onclick="sortBy('high')" id="sort-high">24h最高 <span class="sort-arrow">▲</span></span>
+      <span onclick="sortBy('low')" id="sort-low">24h最低 <span class="sort-arrow">▲</span></span>
+      <span onclick="sortBy('vol')" id="sort-vol">24h成交额 <span class="sort-arrow">▲</span></span>
+    </div>
+    <div id="rows"></div>
+  </div>
+</div>
+
+<div class="empty" id="empty" style="display:none">暂无自选币种</div>
+
+<div class="footer">
+  <span class="dot live" id="dot"></span>
+  <span id="status">系统初始化中…</span>
+</div>
+<div class="keepalive-bar" id="keepaliveBar">
+  <span class="ka-icon" id="kaIcon">🛡️</span>
+  <span class="ka-text" id="kaText">保活就绪</span>
+  <span class="ka-detail" id="kaDetail"></span>
+</div>
+
+<!-- Alert Modal -->
+<div class="modal-overlay" id="alertModalOverlay" onclick="if(event.target===this)closeAlertModal()">
+  <div class="modal alert-modal">
+    <button class="modal-close-btn" onclick="closeAlertModal()" title="关闭">✕</button>
+    <h3>🔔 价格预警管理</h3>
+    <div id="iosAlertHint" style="display:none;margin-bottom:12px;padding:8px 12px;background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.2);border-radius:8px;font-size:0.72rem;color:#e8a030;line-height:1.5;">
+      📱 iOS 提示：系统不支持网页振动，已用屏幕闪烁代替。首次请点 <strong>🔊 测试</strong>按钮激活声音。建议开启「通知渠道」中的微信推送作为备用提醒。
+    </div>
+
+    <!-- 预警列表区 -->
+    <div class="alert-section">
+      <div class="alert-section-header">
+        <span class="alert-section-title">📋 当前预警</span>
+        <span class="alert-section-count" id="alertCount">0 条</span>
+      </div>
+      <div id="alertListWrap" class="alert-list"></div>
+    </div>
+
+    <!-- 添加预警区 -->
+    <div class="alert-section alert-form-section">
+      <div class="alert-section-header">
+        <span class="alert-section-title">➕ 新增预警</span>
+      </div>
+      <div class="alert-form-grid">
+        <div class="alert-field">
+          <label>币种</label>
+          <select id="alertCoin"></select>
+        </div>
+        <div class="alert-field">
+          <label>方向</label>
+          <select id="alertDir">
+            <option value="above">📈 高于</option>
+            <option value="below">📉 低于</option>
+          </select>
+        </div>
+        <div class="alert-field">
+          <label>目标价格 (USD)</label>
+          <input id="alertPrice" type="number" step="any" placeholder="如 88000">
+        </div>
+        <div class="alert-field alert-field-interval">
+          <label>提醒间隔</label>
+          <div class="alert-interval-row">
+            <input id="alertInterval" type="number" min="1" value="5">
+            <select id="alertIntervalUnit">
+              <option value="s">秒</option>
+              <option value="m">分钟</option>
+            </select>
+            <select id="alertIntervalPreset" onchange="applyAlertPreset(this.value)">
+              <option value="">快速</option>
+              <option value="5s">5秒</option>
+              <option value="10s">10秒</option>
+              <option value="30s">30秒</option>
+              <option value="1m">1分钟</option>
+              <option value="5m">5分钟</option>
+              <option value="15m">15分钟</option>
+              <option value="30m">30分钟</option>
+              <option value="60m">1小时</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="alert-add-btn" onclick="addAlert()">
+        <span>添加预警</span>
+      </button>
+      <div class="alert-quick-actions">
+        <button class="alert-tool-btn" onclick="testAlertSound()" title="测试声音">🔊 测试</button>
+        <button class="alert-tool-btn" onclick="testVoiceAlert()" title="语音测试">🗣️ 语音</button>
+        <button class="alert-tool-btn" onclick="triggerScreenAlert('价格预警测试：BTC突破 $88,000！', 'normal')" title="测试屏幕预警">💡 屏幕</button>
+        <button class="alert-tool-btn" onclick="exportAlerts()" title="导出预警">📤 导出</button>
+        <button class="alert-tool-btn" onclick="document.getElementById('importAlertFile').click()" title="导入预警">📥 导入</button>
+        <input type="file" id="importAlertFile" accept=".json" style="display:none" onchange="importAlerts(event)">
+      </div>
+    </div>
+
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- Force Alert Modal -->
+<div class="modal-overlay" id="forceAlertModalOverlay" onclick="if(event.target===this)closeForceAlertModal()">
+  <div class="modal alert-modal">
+    <button class="modal-close-btn" onclick="closeForceAlertModal()" title="关闭">✕</button>
+    <h3>🚨 强制跌幅预警</h3>
+    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:12px;line-height:1.5;">
+      监控币种在指定时间窗口内的跌幅，超过阈值时<b style="color:var(--red)">强制语音预警</b>，不受语音开关限制。系统每15秒自动采样价格，按监控时段独立刷新检测。
+    </p>
+
+    <!-- 强制预警列表 -->
+    <div class="alert-section">
+      <div class="alert-section-header">
+        <span class="alert-section-title">📋 当前强制预警</span>
+        <span class="alert-section-count" id="forceAlertCount">0 条</span>
+      </div>
+      <div id="forceAlertListWrap" class="alert-list"></div>
+    </div>
+
+    <!-- 添加强制预警 -->
+    <div class="alert-section alert-form-section">
+      <div class="alert-section-header">
+        <span class="alert-section-title">➕ 新增强制预警</span>
+      </div>
+      <div class="alert-form-grid">
+        <div class="alert-field">
+          <label>币种</label>
+          <select id="forceAlertCoin"></select>
+        </div>
+        <div class="alert-field">
+          <label>跌幅阈值 (%)</label>
+          <input id="forceAlertDrop" type="number" step="0.1" min="0.1" value="5" placeholder="如 5">
+        </div>
+        <div class="alert-field">
+          <label>监控窗口</label>
+          <div class="alert-interval-row">
+            <input id="forceAlertWindow" type="number" min="1" value="30">
+            <select id="forceAlertWindowUnit">
+              <option value="m">分钟</option>
+              <option value="h">小时</option>
+            </select>
+            <select id="forceAlertWindowPreset" onchange="applyForceWindowPreset(this.value)">
+              <option value="">快速</option>
+              <option value="5m">5分钟</option>
+              <option value="15m">15分钟</option>
+              <option value="30m">30分钟</option>
+              <option value="1h">1小时</option>
+              <option value="2h">2小时</option>
+              <option value="4h">4小时</option>
+              <option value="8h">8小时</option>
+              <option value="12h">12小时</option>
+              <option value="24h">24小时</option>
+            </select>
+          </div>
+        </div>
+        <div class="alert-field">
+          <label>冷却时间</label>
+          <div class="alert-interval-row">
+            <input id="forceAlertCooldown" type="number" min="1" value="5">
+            <select id="forceAlertCooldownUnit">
+              <option value="m">分钟</option>
+              <option value="s">秒</option>
+            </select>
+            <select id="forceAlertCooldownPreset" onchange="applyForceCooldownPreset(this.value)">
+              <option value="">快速</option>
+              <option value="1m">1分钟</option>
+              <option value="5m">5分钟</option>
+              <option value="15m">15分钟</option>
+              <option value="30m">30分钟</option>
+              <option value="60m">1小时</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button class="alert-add-btn" onclick="addForceAlert()" style="background:linear-gradient(135deg,#ff416c,#ff4b2b);">
+        <span>🚨 添加强制预警</span>
+      </button>
+      <div class="alert-quick-actions">
+        <button class="alert-tool-btn" onclick="testForceAlertVoice()" title="测试强制语音">🗣️ 测试语音</button>
+        <button class="alert-tool-btn" onclick="triggerScreenAlert('🚨 紧急预警测试：BTC 5min跌5.23%！', 'urgent')" title="测试屏幕爆闪">💡 爆闪</button>
+        <button class="alert-tool-btn" onclick="exportForceAlerts()" title="导出预警">📤 导出</button>
+        <button class="alert-tool-btn" onclick="document.getElementById('importForceAlertFile').click()" title="导入预警">📥 导入</button>
+        <input type="file" id="importForceAlertFile" accept=".json" style="display:none" onchange="importForceAlerts(event)">
+      </div>
+    </div>
+
+    <!-- 实时跌幅监控面板 -->
+    <div class="alert-section" id="forceDropMonitor" style="display:none;">
+      <div class="alert-section-header">
+        <span class="alert-section-title">📊 实时跌幅监控</span>
+      </div>
+      <div id="forceDropMonitorBody"></div>
+    </div>
+
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- Portfolio Modal -->
+<div class="modal-overlay" id="portfolioModalOverlay" onclick="if(event.target===this)closePortfolioModal()">
+  <div class="modal" style="max-width:500px;">
+    <button class="modal-close-btn" onclick="closePortfolioModal()" title="关闭">✕</button>
+    <h3>💰 持仓盈亏追踪</h3>
+    <div class="portfolio-summary" id="portfolioSummary"></div>
+    <div id="portfolioList" style="max-height:300px;overflow-y:auto;"></div>
+    <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:8px;">
+      <div class="modal-field">
+        <label>币种</label>
+        <select id="portfolioCoin"></select>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <div class="modal-field" style="flex:1;">
+          <label>买入价 (USD)</label>
+          <input id="portfolioBuyPrice" type="number" step="any" placeholder="如 60000">
+        </div>
+        <div class="modal-field" style="flex:1;">
+          <label>持有数量</label>
+          <input id="portfolioQty" type="number" step="any" placeholder="如 0.5">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn-secondary" onclick="closePortfolioModal()">关闭</button>
+        <button class="modal-btn-primary" onclick="addPortfolioEntry()">添加持仓</button>
+      </div>
+    </div>
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal-overlay" id="helpModalOverlay" onclick="if(event.target===this)closeHelpModal()">
+  <div class="modal" style="max-width:380px;">
+    <button class="modal-close-btn" onclick="closeHelpModal()" title="关闭">✕</button>
+    <h3>⌨️ 快捷键</h3>
+    <div class="help-shortcuts">
+      <kbd>/</kbd><span>聚焦搜索框</span>
+      <kbd>N</kbd><span>添加新币种</span>
+      <kbd>A</kbd><span>打开预警面板</span>
+      <kbd>F</kbd><span>打开强制预警面板</span>
+      <kbd>M</kbd><span>通知渠道设置</span>
+      <kbd>P</kbd><span>打开持仓面板</span>
+      <kbd>H</kbd><span>打开此帮助</span>
+      <kbd>S</kbd><span>切换声音</span>
+      <kbd>T</kbd><span>切换深色/浅色主题</span>
+      <kbd>L</kbd><span>币种读法切换（中文/逐字母）</span>
+      <kbd>Esc</kbd><span>关闭弹窗</span>
+    </div>
+    <div class="modal-actions" style="margin-top:16px;">
+      <button class="modal-btn-primary" onclick="closeHelpModal()" style="flex:1;">知道了</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notification Settings Modal -->
+<div class="modal-overlay" id="notifyModalOverlay" onclick="if(event.target===this)closeNotifyModal()">
+  <div class="modal" style="max-width:460px;">
+    <button class="modal-close-btn" onclick="closeNotifyModal()" title="关闭">✕</button>
+    <h3>📱 通知渠道设置</h3>
+    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:16px;line-height:1.5;">
+      配置后，价格预警触发时会自动发送通知到对应渠道。密钥仅保存在本地浏览器。
+    </p>
+
+    <!-- Server酱 (WeChat) -->
+    <div class="notify-channel">
+      <div class="notify-channel-header">
+        <span class="notify-channel-title"><span class="ch-icon">💚</span> Server酱（微信推送）</span>
+        <label class="notify-toggle">
+          <input type="checkbox" id="notifyServerChan" onchange="toggleNotifyChannel('serverchan')">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="notify-channel-desc">
+        免费推送到微信，<a class="notify-link" href="https://sct.ftqq.com/" target="_blank" rel="noopener">点此获取 SendKey →</a>
+      </div>
+      <div class="notify-channel-row">
+        <input type="text" id="serverchanKey" placeholder="粘贴你的 SendKey" oninput="saveNotifyConfig()">
+        <button class="notify-test-btn" onclick="testNotify('serverchan')">测试</button>
+      </div>
+      <div class="notify-status" id="serverchanStatus"></div>
+    </div>
+
+    <!-- PushPlus (WeChat) -->
+    <div class="notify-channel">
+      <div class="notify-channel-header">
+        <span class="notify-channel-title"><span class="ch-icon">💙</span> PushPlus（微信推送）</span>
+        <label class="notify-toggle">
+          <input type="checkbox" id="notifyPushplus" onchange="toggleNotifyChannel('pushplus')">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="notify-channel-desc">
+        微信消息推送，<a class="notify-link" href="https://www.pushplus.plus/" target="_blank" rel="noopener">点此获取 Token →</a>
+      </div>
+      <div class="notify-channel-row">
+        <input type="text" id="pushplusToken" placeholder="粘贴你的 Token" oninput="saveNotifyConfig()">
+        <button class="notify-test-btn" onclick="testNotify('pushplus')">测试</button>
+      </div>
+      <div class="notify-status" id="pushplusStatus"></div>
+    </div>
+
+    <!-- Email -->
+    <div class="notify-channel">
+      <div class="notify-channel-header">
+        <span class="notify-channel-title"><span class="ch-icon">📧</span> Email（邮件通知）</span>
+        <label class="notify-toggle">
+          <input type="checkbox" id="notifyEmail" onchange="toggleNotifyChannel('email')">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="notify-channel-desc">
+        通过 EmailJS 发送，<a class="notify-link" href="https://www.emailjs.com/" target="_blank" rel="noopener">免费注册 →</a><br>
+        需要 Service ID、Template ID、Public Key（模板变量: subject, message, to_email）
+      </div>
+      <input type="email" id="emailTo" placeholder="接收通知的邮箱地址" oninput="saveNotifyConfig()">
+      <input type="text" id="emailServiceId" placeholder="EmailJS Service ID (如 service_xxx)" oninput="saveNotifyConfig()">
+      <input type="text" id="emailTemplateId" placeholder="EmailJS Template ID (如 template_xxx)" oninput="saveNotifyConfig()">
+      <input type="text" id="emailPublicKey" placeholder="EmailJS Public Key" oninput="saveNotifyConfig()">
+      <div style="display:flex;justify-content:flex-end;margin-top:6px;">
+        <button class="notify-test-btn" onclick="testNotify('email')">发送测试邮件</button>
+      </div>
+      <div class="notify-status" id="emailStatus"></div>
+    </div>
+
+    <!-- iOS 锁屏通知 -->
+    <div class="notify-channel" id="iosPushChannel" style="display:none;">
+      <div class="notify-channel-header">
+        <span class="notify-channel-title"><span class="ch-icon">🍎</span> iOS 锁屏通知</span>
+        <label class="notify-toggle">
+          <input type="checkbox" id="notifyIosPush" onchange="toggleNotifyChannel('iosPush')">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="notify-channel-desc">
+        iOS 16.4+ 支持，预警触发时会在锁屏/灵动岛下方弹出通知横幅。<br>
+        ⚠️ 需要「添加到主屏幕」后才可使用，后台关闭时无法接收。
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="notify-test-btn" id="iosPushEnableBtn" onclick="enableIosPush()">开启通知权限</button>
+        <button class="notify-test-btn" onclick="testNotify('iosPush')">发送测试</button>
+      </div>
+      <div class="notify-status" id="iosPushStatus"></div>
+    </div>
+
+    <div class="modal-actions" style="margin-top:12px;">
+      <button class="modal-btn-primary" onclick="closeNotifyModal()" style="flex:1;">完成</button>
+    </div>
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- News Modal -->
+<div class="modal-overlay" id="newsModalOverlay" onclick="if(event.target===this)closeNewsModal()">
+  <div class="modal news-modal">
+    <button class="modal-close-btn" onclick="closeNewsModal()" title="关闭">✕</button>
+    <h3>📰 新闻 / 公告聚合</h3>
+    <div class="news-filter-bar">
+      <button class="news-filter-btn active" data-filter="all" onclick="filterNews('all',this)">全部</button>
+      <button class="news-filter-btn" data-filter="watchlist" onclick="filterNews('watchlist',this)">自选币种</button>
+      <button class="news-filter-btn" data-filter="important" onclick="filterNews('important',this)">⚠️ 重要</button>
+    </div>
+    <div id="newsList" class="news-list">
+      <div class="news-loading"><span class="spinner"></span>加载中…</div>
+    </div>
+    <div class="news-footer">
+      <span class="news-source-note">数据来源: CoinTelegraph / The Block / CryptoNews</span>
+      <button class="news-refresh-btn" id="newsRefreshBtn" onclick="refreshNews(this)"><span class="refresh-icon">🔄</span> 刷新</button>
+    </div>
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- Unlock Modal -->
+<div class="modal-overlay" id="unlockModalOverlay" onclick="if(event.target===this)closeUnlockModal()">
+  <div class="modal unlock-modal">
+    <button class="modal-close-btn" onclick="closeUnlockModal()" title="关闭">✕</button>
+    <h3>🔓 币种解锁通知</h3>
+    <div class="unlock-summary" id="unlockSummary"></div>
+    <div class="unlock-filter-bar">
+      <button class="news-filter-btn active" data-filter="all" onclick="filterUnlocks('all',this)">全部</button>
+      <button class="news-filter-btn" data-filter="watchlist" onclick="filterUnlocks('watchlist',this)">自选币种</button>
+      <button class="news-filter-btn" data-filter="7d" onclick="filterUnlocks('7d',this)">7天内</button>
+      <button class="news-filter-btn" data-filter="30d" onclick="filterUnlocks('30d',this)">30天内</button>
+    </div>
+    <div id="unlockList" class="unlock-list">
+      <div class="news-loading"><span class="spinner"></span>加载中…</div>
+    </div>
+    <div class="news-footer">
+      <span class="news-source-note">数据来源: Token Unlocks / CoinGecko</span>
+      <button class="news-refresh-btn" id="unlockRefreshBtn" onclick="refreshUnlocks(this)"><span class="refresh-icon">🔄</span> 刷新</button>
+    </div>
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<!-- AI Analysis Modal -->
+<div class="modal-overlay" id="aiModalOverlay" onclick="if(event.target===this)closeAiModal()">
+  <div class="modal ai-modal">
+    <button class="modal-close-btn" onclick="closeAiModal()" title="关闭">✕</button>
+    <h3>🤖 AI 智能分析</h3>
+    <p class="ai-desc">基于当前行情数据、交易量和市场指标，AI 为你生成的智能分析报告。</p>
+    <div class="ai-actions">
+      <button class="ai-action-btn" onclick="runAiAnalysis('market')">
+        <span class="ai-action-icon">📊</span>
+        <span class="ai-action-text">
+          <strong>市场全景分析</strong>
+          <small>整体趋势、恐惧贪婪、BTC占比</small>
+        </span>
+      </button>
+      <button class="ai-action-btn" onclick="runAiAnalysis('coins')">
+        <span class="ai-action-icon">💰</span>
+        <span class="ai-action-text">
+          <strong>自选币种诊断</strong>
+          <small>各币种技术面、支撑/阻力、入手建议</small>
+        </span>
+      </button>
+      <button class="ai-action-btn" onclick="runAiAnalysis('entry')">
+        <span class="ai-action-icon">🎯</span>
+        <span class="ai-action-text">
+          <strong>入手区间建议</strong>
+          <small>基于量价分析的分批建仓策略</small>
+        </span>
+      </button>
+      <button class="ai-action-btn" onclick="runAiAnalysis('risk')">
+        <span class="ai-action-icon">⚠️</span>
+        <span class="ai-action-text">
+          <strong>风险评估</strong>
+          <small>持仓风险、止损建议、仓位管理</small>
+        </span>
+      </button>
+    </div>
+    <div id="aiResult" class="ai-result" style="display:none">
+      <div class="ai-result-header">
+        <span class="ai-result-title" id="aiResultTitle"></span>
+        <span class="ai-result-time" id="aiResultTime"></span>
+      </div>
+      <div class="ai-result-body" id="aiResultBody"></div>
+      <div class="ai-disclaimer">⚠️ 以上分析仅供参考，不构成投资建议。加密货币市场波动极大，请自行评估风险。</div>
+    </div>
+    <div class="modal-scroll-shadow"></div>
+  </div>
+</div>
+
+<script src="crypto.js"></script>
+</body>
+</html>
